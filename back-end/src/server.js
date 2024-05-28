@@ -102,6 +102,129 @@ app.post('/signup', async (req, res) => {
     }
 });
 
+//---------------------------------------------------------------------------------------------------------------
+// Add records from UI
+//--------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+// Endpoint to handle room/add requests
+//---------------------------------------------------------------------------------------------
+app.post('/room/add', async (req, res) => {
+    const { name, roomNumber, bedInfo } = req.body;
+
+    if (!name || !roomNumber || !bedInfo) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    try {
+        // Check if the room already exists
+        const roomQuery = await pool.query('SELECT * FROM room WHERE room_number = $1', [roomNumber]);
+        if (roomQuery.rows.length > 0) {
+            return res.status(400).json({ message: 'Room already exists' });
+        }
+
+        // Insert the new room into the database
+        const newRoomQuery = `
+            INSERT INTO room (name, room_number, bed_info)
+            VALUES ($1, $2, $3)
+            RETURNING room_id, name, room_number, bed_info
+        `;
+        const newRoomResult  = await pool.query(newRoomQuery, [name, roomNumber, bedInfo]);
+
+        // Send a response with the newly created room details
+        const newRoom = newRoomResult.rows[0];
+        
+        return res.status(201).json({
+            message: 'Room successfully Added',
+            room: newRoom
+        });
+    } catch (error) {
+        console.error('Error during insert:', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
+//---------------------------------------------------------------------------------------------
+// Endpoint to handle room/edit/:roomNumber requests
+//---------------------------------------------------------------------------------------------
+app.put('/room/edit/:roomNumber', async (req, res) => {
+    const { name, bedInfo } = req.body;
+    const { roomNumber } = req.params;
+
+    if (!name || !bedInfo) {
+        console.log('Validation Error:', { name, bedInfo, roomNumber });
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    try {
+        const roomQuery = await pool.query('SELECT * FROM room WHERE room_number = $1', [roomNumber]);
+        if (roomQuery.rows.length === 0) {
+            console.log('Room not found:', roomNumber);
+            return res.status(404).json({ message: 'Room not found' });
+        }
+
+        const updateRoomQuery = `
+            UPDATE room
+            SET name = $1, bed_info = $2
+            WHERE room_number = $3
+            RETURNING room_id, name, room_number, bed_info
+        `;
+        const updateRoomResult = await pool.query(updateRoomQuery, [name, bedInfo, roomNumber]);
+
+        const updatedRoom = updateRoomResult.rows[0];
+        console.log('Room updated successfully:', updatedRoom);
+
+        return res.status(200).json({
+            message: 'Room successfully updated',
+            room: updatedRoom
+        });
+    } catch (error) {
+        console.error('Error during update:', error);
+        return res.status(500).json({ message: 'Server Error' });
+    }
+});
+
+//---------------------------------------------------------------------------------------------
+// Endpoint to handle room/delete/:roomNumber requests
+//---------------------------------------------------------------------------------------------
+app.delete('/room/delete/:roomNumber', async (req, res) => {
+    const { roomNumber } = req.params;
+
+    try {
+        // Check if the room exists
+        const roomQuery = await pool.query('SELECT * FROM room WHERE room_number = $1', [roomNumber]);
+        if (roomQuery.rows.length === 0) {
+            console.log('Room not found:', roomNumber);
+            return res.status(404).json({ message: 'Room not found' });
+        }
+
+        // Delete the room
+        const deleteRoomQuery = `
+            DELETE FROM room
+            WHERE room_number = $1
+            RETURNING room_id, name, room_number, bed_info
+        `;
+        const deleteRoomResult = await pool.query(deleteRoomQuery, [roomNumber]);
+
+        // Check if the room was deleted
+        if (deleteRoomResult.rows.length === 0) {
+            console.log('Room deletion failed:', roomNumber);
+            return res.status(500).json({ message: 'Room deletion failed' });
+        }
+
+        const deletedRoom = deleteRoomResult.rows[0];
+        console.log('Room deleted successfully:', deletedRoom);
+
+        return res.status(200).json({
+            message: 'Room successfully deleted',
+            room: deletedRoom
+        });
+    } catch (error) {
+        console.error('Error during delete:', error);
+        return res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
