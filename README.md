@@ -1,82 +1,40 @@
 <h1>Room Management System</h1>
 <p>This project is a Room Management System that allows users to perform CRUD (Create, Read, Update, Delete) operations on room data. The system is built using Node.js, Express, React, PostgreSQL, Bootstrap, and JavaScript. It also includes authentication and registration functionalities.</p>
 <br />
-<h2>Table of Contents</h2><br />
+<h2>Table of Contents</h2>
 
-<ul>
-<li>Features</li>
-<li>Technologies Used</li>
-<li>Installation</li>
-<li>Usage</li>
-<li>API Endpoints</li>
-<li>Screenshots</li>
-<li>Contributing</li>
-<li>License</li>
-</ul><br />
 <ul><li><a target="_new" rel="noreferrer" href="#features">Features</a></li><li><a target="_new" rel="noreferrer" href="#technologies-used">Technologies Used</a></li><li><a target="_new" rel="noreferrer" href="#installation">Installation</a></li><li><a target="_new" rel="noreferrer" href="#usage">Usage</a></li><li><a target="_new" rel="noreferrer" href="#api-endpoints">API Endpoints</a></li><li><a target="_new" rel="noreferrer" href="#screenshots">Screenshots</a></li><li><a target="_new" rel="noreferrer" href="#contributing">Contributing</a></li><li><a target="_new" rel="noreferrer" href="#license">License</a></li></ul>
 <h2>Features</h2><br />
-<ul>
-User Authentication and Registration
-Create, Read, Update, Delete (CRUD) operations for room data
-Search and filter rooms
-Sorting room data
-Responsive design with Bootstrap
-Technologies Used
-Backend: Node.js, Express
-Frontend: React, JavaScript, Bootstrap
-Database: PostgreSQL
-Authentication: JSON Web Tokens (JWT)
-HTTP Client: Axios
-Installation
-Prerequisites
-Node.js
-PostgreSQL
-NPM (Node Package Manager)
-Backend Setup
-Clone the repository:
+<ul><li><strong>User Authentication and Registration</strong></li><li><strong>Create, Read, Update, Delete (CRUD) operations for room data</strong></li><li><strong>Search and filter rooms</strong></li><li><strong>Sorting room data</strong></li><li><strong>Responsive design with Bootstrap</strong></li></ul>
 
-bash
-Copy code
-git clone https://github.com/sarwaraminy/full-stack-node-react.git
-cd room-management-system
-Install backend dependencies:
+<h2>Technologies Used</h2>
+<ul><li><strong>Backend</strong>: Node.js, Express</li><li><strong>Frontend</strong>: React, JavaScript, Bootstrap</li><li><strong>Database</strong>: PostgreSQL</li><li><strong>Authentication</strong>: JSON Web Tokens (JWT)</li><li><strong>HTTP Client</strong>: Axios</li></ul>
 
-bash
-Copy code
-cd backend
+<h2>Installation</h2>
+<h3>Prerequisites</h3>
+<ul><li>Node.js</li><li>PostgreSQL</li><li>NPM (Node Package Manager)</li></ul>
+
+<h3>Backend Setup</h3>
+<ol><li><p>Clone the repository:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/yourusername/room-management-system.git
+<span class="hljs-built_in">cd</span> room-management-system
+</code></div></div></pre></li><li><p>Install backend dependencies:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cd</span> backend
 npm install
-Set up PostgreSQL database and configure environment variables in .env file:
-
-env
-Copy code
-DB_USER=your_db_user
+</code></div></div></pre></li><li><p>Set up PostgreSQL database and configure environment variables in <code>.env</code> file:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash">DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_HOST=your_db_host
 DB_PORT=your_db_port
 DB_DATABASE=your_db_name
 JWT_SECRET=your_jwt_secret
-Run the backend server:
+</code></div></div></pre></li><li><p>Run the backend server:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash">npm start
+</code></div></div></pre></li></ol>
 
-bash
-Copy code
-npm start
-Frontend Setup
-Navigate to the frontend directory and install dependencies:
-
-bash
-Copy code
-cd frontend
+<h3>Frontend Setup</h3>
+<ol><li><p>Navigate to the frontend directory and install dependencies:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cd</span> frontend
 npm install
-Configure environment variables in .env file:
+</code></div></div></pre></li><li><p>Configure environment variables in <code>.env</code> file:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash">REACT_APP_SERVER_ADDRESS=http://localhost:8000
+</code></div></div></pre></li><li><p>Run the frontend development server:</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copy code</button></span></div></div><div class="overflow-y-auto p-4 text-left undefined" dir="ltr"><code class="!whitespace-pre hljs language-bash">npm start
+</code></div></div></pre></li></ol>
 
-env
-Copy code
-REACT_APP_SERVER_ADDRESS=http://localhost:8000
-Run the frontend development server:
-
-bash
-Copy code
-npm start
 Usage
 Register a new user account.
 Log in with the registered account.
