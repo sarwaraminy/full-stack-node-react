@@ -21,7 +21,7 @@ app.get('/rooms', async (req, res) => {
         const result = await pool.query('SELECT * FROM room');
         res.json(result.rows);
     } catch (err) {
-        console.error(err);
+        //console.error(err);
         res.status(500).send('Server Error');
     }
 });
@@ -59,7 +59,7 @@ app.post('/login', async (req, res) => {
         // Send the token in the response
         res.json({ token });
     } catch (error) {
-        console.error('Error during login:', error);
+        //console.error('Error during login:', error);
         res.status(500).json({ message: 'Server Error' });
     }
 });
@@ -97,7 +97,7 @@ app.post('/signup', async (req, res) => {
 
         res.status(201).json({ token, user: newUser.rows[0] });
     } catch (error) {
-        console.error('Error during signup:', error);
+        //console.error('Error during signup:', error);
         res.status(500).json({ message: 'Server Error' });
     }
 });
@@ -139,7 +139,7 @@ app.post('/room/add', async (req, res) => {
             room: newRoom
         });
     } catch (error) {
-        console.error('Error during insert:', error);
+        //console.error('Error during insert:', error);
         res.status(500).json({ message: 'Server Error' });
     }
 });
@@ -179,7 +179,7 @@ app.put('/room/edit/:roomNumber', async (req, res) => {
             room: updatedRoom
         });
     } catch (error) {
-        console.error('Error during update:', error);
+        //console.error('Error during update:', error);
         return res.status(500).json({ message: 'Server Error' });
     }
 });
@@ -194,7 +194,7 @@ app.delete('/room/delete/:roomNumber', async (req, res) => {
         // Check if the room exists
         const roomQuery = await pool.query('SELECT * FROM room WHERE room_number = $1', [roomNumber]);
         if (roomQuery.rows.length === 0) {
-            console.log('Room not found:', roomNumber);
+            //console.log('Room not found:', roomNumber);
             return res.status(404).json({ message: 'Room not found' });
         }
 
@@ -208,19 +208,19 @@ app.delete('/room/delete/:roomNumber', async (req, res) => {
 
         // Check if the room was deleted
         if (deleteRoomResult.rows.length === 0) {
-            console.log('Room deletion failed:', roomNumber);
+            //console.log('Room deletion failed:', roomNumber);
             return res.status(500).json({ message: 'Room deletion failed' });
         }
 
         const deletedRoom = deleteRoomResult.rows[0];
-        console.log('Room deleted successfully:', deletedRoom);
+        //console.log('Room deleted successfully:', deletedRoom);
 
         return res.status(200).json({
             message: 'Room successfully deleted',
             room: deletedRoom
         });
     } catch (error) {
-        console.error('Error during delete:', error);
+        //console.error('Error during delete:', error);
         return res.status(500).json({ message: 'Server Error' });
     }
 });
