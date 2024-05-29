@@ -19,9 +19,11 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from this origin
-}));
+//app.use(cors({
+//  origin: 'http://localhost:3000', // Allow requests from this origin
+//}));
+
+
 app.use(express.json()); // Middleware to parse JSON request bodies
 app.use(express.static(path.join(__dirname, '../build'))); // it is for production where the build is from frontend with "npm run build"
 
