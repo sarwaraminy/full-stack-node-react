@@ -5,6 +5,14 @@ import jwt from 'jsonwebtoken';
 import pool from './dbConnect.js';
 import dotenv from 'dotenv';
 
+//-----------------------------------------------------------------
+// propare for hosting
+//-----------------------------------------------------------------
+import { fileURLToPath } from 'url';
+import path from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 dotenv.config();
 
 const app = express();
@@ -15,6 +23,8 @@ app.use(cors({
   origin: 'http://localhost:3000', // Allow requests from this origin
 }));
 app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(express.static(path.join(__dirname, '../build'))); // it is for production where the build is from frontend with "npm run build"
+
 
 app.get('/rooms', async (req, res) => {
     try {
