@@ -4,6 +4,7 @@ import { LoginPage } from "./components/LoginPage";
 import { SignUpPage } from "./components/SignUp";
 import './App.css';
 import RoomData from './components/rooms';
+import NotFoundPage from "./components/NotFountPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
