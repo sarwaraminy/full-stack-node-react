@@ -149,6 +149,7 @@ const RoomData = () => {
             </tbody>
           </table>
         </div>
+        <div className="row mt-3"><div className="col-md-12 text-center font-weight-bold">Number of records: {rooms.length}</div></div>
       </div>
     </>
   );

@@ -27,6 +27,9 @@ const port = process.env.PORT || 8000;
 app.use(express.json()); // Middleware to parse JSON request bodies
 app.use(express.static(path.join(__dirname, '../build'))); // it is for production where the build is from frontend with "npm run build"
 
+app.get(/^(?!\/room).+/, (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.get('/rooms', async (req, res) => {
     try {
